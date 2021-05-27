@@ -1,0 +1,316 @@
+@import 'config';
+@import 'menu';
+
+
+*{
+    box-sizing: border-box;
+}
+
+
+body{
+    @include background;
+    background-color: $primary-color ;
+    margin: 0;
+    height: 100%;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5;
+}
+
+h1,
+h2,
+h3{
+    margin: 0;
+    font-weight: 400;
+    &.large-heading{
+        font-size: 5rem;
+        color: white;
+    }
+    &.small-heading{
+        margin: 0;
+        color:white;
+        padding: 0.2rem 1rem;
+        background: rgba(lighten($primary-color, 2),0.5);
+    }
+}
+
+a{
+    text-decoration: none;
+    color: #fff;
+}
+
+header{
+    
+    position: fixed;
+    z-index: 2;
+    width: 100%;
+}
+
+.secondary-text{
+    color: $secondary-color;
+}
+
+main{
+    // height: 100%;
+    min-height: calc(100vh - 60px);
+    padding: 4rem;
+    .icons{
+       margin-top: 1rem; 
+       a{
+           padding: 0.4rem;
+           &:hover{
+               &:nth-child(1){
+                color:#3D90C3;
+                @include easeOut();
+               }
+               &:nth-child(2){
+                color: #4267B2;
+                @include easeOut();
+               }
+               &:nth-child(3){
+                color: #0073B0;
+                @include easeOut();
+               }
+               &:nth-child(4){
+                color: #E7375D;;
+                @include easeOut();
+               }
+               &:nth-child(5){
+                   color: $secondary-color;
+                   @include easeOut();
+               }
+
+           }
+       }
+    }
+
+    &#home{
+        overflow: hidden;
+        h1{
+            margin-top: 20vh;
+        }
+    }
+}
+
+.about-info{
+    padding-top: 20px;
+    display: grid;
+    grid-template-areas: 
+    'bio-img bio bio'
+    'education education education'
+    'job1 job2 job3';
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 30px;
+}
+
+.bio-image{
+    &:hover{
+        transform: scale(1.15);
+    }
+    grid-area: bio-img;
+    height: 250px;
+    width: 250px;
+    border-radius: 50%;
+    border: $secondary-color solid 3px;
+}
+
+.bio{
+    p{
+        color: set-text-color($primary-color);
+        font-size: 20px;
+    }
+    h3{
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+    grid-area: bio;
+}
+
+.education{
+    grid-area: education;
+}
+
+.job1{
+    grid-area: job1;
+}
+
+.job2{
+    grid-area: job2;
+}
+
+.job3{
+    grid-area: job3;
+}
+
+.job{
+    &:hover{
+        box-shadow: 0.3rem 0.3rem 1rem $secondary-color;
+    }
+    border-bottom: $secondary-color solid 5px;
+    border-radius: 10%;
+    background: lighten($primary-color,5);
+    h6{
+        padding: 5px 100px;
+        text-align: center;
+        font-size: 14px;
+        color: $secondary-color;
+        background-color: darken($primary-color, 10);
+    }
+    h2{
+        font-weight: bold;
+        padding-top: 1rem;
+        padding-left: 1rem;
+    }
+    ul{
+        
+        list-style: none;
+        color: white;
+        span{
+            font-weight: bold;
+        }
+    }
+}
+
+.projects{
+    padding-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 20px;
+    }
+    .project-card{
+        background-color: transparent;
+        height: 400px;
+        width: 300px;
+        border-bottom: 5px solid $secondary-color;
+        perspective: 1000px;
+        border-radius: 5%;
+    }
+    .inner-card{
+        border-radius: 5%;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+    }
+    .project-card:hover .inner-card{
+        transform: rotateY(180deg);
+    }
+    .front-face,.back-face{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden; /* Safari */
+        backface-visibility: hidden;
+        border-radius: 5%;
+    }
+    .front-face{
+        img{
+            height: 200;
+            width: 100%;
+            border: 3px solid white;
+        }
+        .tags{
+                color:set-text-color($primary-color);
+                text-transform: capitalize;
+                margin: 0.2rem;
+                padding: 0.2rem 0.5rem;
+                font-size: 0.8rem;
+                border-radius: 0.8rem;
+            .tag1{
+                background-color: red;
+               
+            }
+            .tag2{
+                background-color: blue;
+            }
+            .tag3{
+                background-color: orangered;
+            }
+        }
+        background-color: #bbb;
+        color: black;
+    }
+    .back-face{
+        h2{
+            color: $primary-color;
+            font-weight: bold;
+        }
+        p{
+            color: black;
+        }
+        padding: 10px;
+        background: linear-gradient(to bottom right, yellow , orange);
+        color: white;
+        transform: rotateY(180deg);
+    }
+.card-image{
+    height: 250px;
+    width: 300px;
+}
+
+.contact-boxes{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 1rem;
+
+    div{
+        background: lighten($primary-color, 5);
+        font-size: 2rem;
+        border: 3px white solid;
+        padding: 1.5rem 2.5rem;
+        margin-bottom: 3rem;
+        @include easeOut();
+
+        &:hover{
+            padding: 0.5rem 1.5 rem;
+            background: $secondary-color;
+            color: set-text-color($secondary-color);
+            i{
+                padding: 0.5rem 1.5 rem;
+            }
+            span{
+                font-weight: bold;
+                padding: 0.5rem 1.5rem;
+                color: set-text-color($secondary-color);
+            }
+        }
+    }
+}
+
+.btn{
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    border: 0;
+    margin-bottom: 0.3rem;
+    border: 2px solid white;
+    &:hover{
+        background: $secondary-color;
+        color: set-text-color($secondary-color);
+    }
+}
+
+.btn-dark{
+    @extend .btn;
+    background: darken($primary-color, 50);
+    color: #fff;
+}
+
+.btn-light{
+    @extend .btn;
+    background: lighten($primary-color,50);
+    color: #333;
+    font-weight: bold;
+}
+
+#main-footer{
+    text-align: center;
+    padding: 1rem;
+    height: 60px;
+    background: darken($primary-color, 10);
+    color: rgb(247, 241, 241);
+}
+
+@import 'mobile';

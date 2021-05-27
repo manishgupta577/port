@@ -1,0 +1,100 @@
+// Widescreen
+
+@include mediaXL{
+    .projects{
+        grid-template-columns: repeat(4,1fr);
+    }
+}
+
+// Desktops & Laptops
+
+@include mediaLg{
+    .projects{
+        grid-template-columns: repeat(3,1fr);
+    }
+}
+
+// Tablets
+
+@include mediaMd{
+    main{
+        align-items: center;
+        text-align: center;
+        .large-heading{
+            line-height: 1rem;
+            margin-bottom: 1rem;
+            min-height: 0;
+            &.show{
+                transform: translate3d(0,0,0);
+            }
+        }
+    }
+    ul.menu-nav,
+    div.menu-picture{
+        float: none;
+        width: 100%;
+        min-height: 0;
+
+        &.show {
+            transform: translate3d(0, 0, 0);
+          }
+    }
+
+    .menu-nav{
+        height: 75vh;
+        transform: translate3d(-100%,0,0);
+        font-size: 24px;
+    }
+    .menu-picture{
+        height: 25vh;
+        transform: translate3d(100%,0,0);
+        .portrait{
+            height: 100px;
+            width: 100px;
+        }
+    }
+    .about-info{
+       
+        grid-template-areas: 
+        'bio-img'
+        'bio'
+        'education'
+        'job1'
+        'job2'
+        'job3';
+        grid-template-columns: 1fr;
+    }
+    .bio-image{
+        height: 150;
+        width: 150;
+    }
+    
+    .projects{
+        grid-template-columns: repeat(2,1fr);;
+    }
+    
+}
+
+// Smartphones
+
+@include mediaSm{
+    main {
+        padding: 2rem;
+        #home h1 {
+          margin-top: 10vh;
+        }
+    
+        .lg-heading {
+          margin-top:1rem;
+          font-size: 5rem;
+        }
+      }
+    
+      .projects {
+        grid-template-columns: 1fr;
+      }
+    .projects{
+        
+        grid-template-columns: repeat(1,1fr);
+    }  
+}
